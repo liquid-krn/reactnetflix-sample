@@ -29,7 +29,7 @@ function Counter() {
                         <h3 className="mx-auto text-center" >Community:{number}</h3><br/>
                         <Input n='firstname' p='input first-name here' o={detectchange} v={fullname.firstname} />
                         <Input n='lastname' p='input last-name here' o={detectchange} v={fullname.lastname} />
-                        <button className="btn btn-primary btn-lg d-grid gap-2 col-8 mx-auto" onClick={increaseCounter}>Sign up</button>
+                        <button className="btn btn-primary btn-lg d-gr0id gap-2 col-8 mx-auto" onClick={increaseCounter}>Sign up</button>
                     </div>
                 </div>
             </div>
