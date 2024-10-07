@@ -10,7 +10,10 @@
   align-items: center;
   position: relative;  /* So loader can be absolutely positioned relative to this */
 }
-
+p,a{
+  color: #9dddbd;
+  text-decoration: none;
+}
 .bungee-tint-regular {
   font-family: "Bungee Tint", sans-serif;
   font-weight: 400;

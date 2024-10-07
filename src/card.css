@@ -4,17 +4,17 @@
     justify-items: center;
     background-color:transparent;
     color: none;
-    width:18rem;
+    width:20rem;
     height: 10rem;
 }
 .container{
 border: solid rgb(185, 137, 137) 3px;
 border-radius: 5%;
-height: 18rem;
+height: 20rem;
 margin-left: auto;
 margin-right: auto;
 }
 .cb{
     height: 3rem;
-    width: 12rem;
+    width: 14rem;
 }
