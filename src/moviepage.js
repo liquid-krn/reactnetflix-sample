@@ -5,7 +5,7 @@ import './home.css'
 function Moviepage(){
     return<div>
         <div className="home">
-       
+            <p>fjiohoi</p>
         </div>
     </div>
 }
