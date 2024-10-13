@@ -1,0 +1,29 @@
+.movie-page {
+  background: linear-gradient(108deg, rgba(60, 8, 8, 1) 71%, rgba(184, 28, 14, 1) 100%);
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; 
+}
+
+.movie-card {
+  width: 150px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 10px; */
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card-text {
+  margin-top: 10px;
+  text-align: center;
+}
+

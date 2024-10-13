@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Input from "./input";
 import Button from "./button";
 import "./card.css";
-import Moviepage from "./moviepage";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {       
@@ -31,7 +30,7 @@ function Signup() {
                     <div className="d-grid  mx-auto">
                     <Button oc={onSignin} className='btn fs-5 fw-semibold btn-success grow mt-3 cb' t={isregistered?"Get Started":"Sign In"} ty="submit"  />
                     <div className="mt-2">
-                    {isregistered?<p>Already a member? <a href="https://facebook.com/" onClick={toggleForm}>Click Here</a></p>:<p className="mt-2">Create new account . <a href="#" onClick={toggleForm}>Click Here</a></p> }
+                    {isregistered?<p>Already a member? <a href="https://facebook.com/" onClick={toggleForm} className="grow">Click Here</a></p>:<p className="mt-2">Create new account . <a href="#" onClick={toggleForm} className="grow">Click Here</a></p> }
                     </div>
                     </div>       
                 </div>

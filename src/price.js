@@ -27,7 +27,7 @@ const rows = [
 function BasicTable() {
   return (
     <div>
-    <div><Navbar /></div>
+    <div><Navbar navbrand='Netflix' /></div>
     <div className="home">
     <TableContainer component={Paper}  style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
