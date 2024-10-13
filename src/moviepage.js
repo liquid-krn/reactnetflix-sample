@@ -10,7 +10,7 @@ function Moviepage() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState(''); 
 
-  const API_KEY = 'b75a6a9e8e8adb9669416063eb4ad37c'; //store in DS when done 
+  const API_KEY = process.env.REACT_APP_API_KEY;
   const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
   useEffect(() => {
