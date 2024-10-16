@@ -10,10 +10,9 @@ function Home() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-            navigate('/signup');  // Navigate after 3 seconds
+            navigate('/signin'); 
         }, 3000);
 
-        // Cleanup the timeout when component unmounts
         return () => clearTimeout(timer);
     }, [navigate]);
 
