@@ -31,8 +31,6 @@ function Signin() {
           setstatus("Empty input space. Kindly fill all fields.");
           return;
         }
-    
-        console.log(userDetails);
         const requestBody = {
             email: userDetails.smail,
             password: userDetails.spassword, 
@@ -49,7 +47,7 @@ function Signin() {
             if(data === "success"){
                 navigate('/moviepage')
             }else{
-                setstatus('wrong infromation inputted kindly refill') 
+                setstatus('wrong information inputted kindly refill') 
             }
         }) 
             
