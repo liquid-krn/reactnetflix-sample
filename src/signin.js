@@ -5,7 +5,6 @@ import "./card.css";
 import { useNavigate} from "react-router-dom";
 
 
-
 function Signin() {       
     
     const [isregistered,setisregistered]= useState(true);
@@ -22,13 +21,23 @@ function Signin() {
       }
     function onSignin(e){
         e.preventDefault();  
-      
+        const { smail, spassword} = userDetails;
+        if (!smail.includes('@') || !smail.includes('.')) {
+            setstatus("Inputted value not an email");
+            return;
+          }
+  
+        if (!smail || !spassword) {
+          setstatus("Empty input space. Kindly fill all fields.");
+          return;
+        }
+    
         console.log(userDetails);
         const requestBody = {
             email: userDetails.smail,
             password: userDetails.spassword, 
         };
-        fetch(`http://localhost:3001/signin`, {
+        fetch(`https://server-rtzj.onrender.com/signin`, {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json'
@@ -43,11 +52,6 @@ function Signin() {
                 setstatus('wrong infromation inputted kindly refill') 
             }
         }) 
-        // if(isregistered){
-        //     navigate('/moviepage')
-        // }else{
-        //     navigate('/signin')
-        // }
             
     }
       

@@ -18,3 +18,10 @@ margin-right: auto;
     height: 3rem;
     width: 14rem;
 }
+.containerr{
+    border: solid rgb(185, 137, 137) 3px;
+    border-radius: 5%;
+    height: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+    }
