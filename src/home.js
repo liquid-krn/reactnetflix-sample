@@ -20,7 +20,7 @@ function Home() {
         <div>
             {isLoading ? (
                 <div className="home">
-                    <div><h1 className="bungee-tint-regular animate__heartBeat">Netflix</h1></div>
+                    <div><h1 className="bungee-tint-regular animate__heartBeat">Movie-Db</h1></div>
                     <div className='loader mt'></div>        
                 </div>
                 

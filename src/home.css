@@ -38,3 +38,10 @@ p,a{
   87.5%{background: conic-gradient(#f03355 315deg,#0000 316deg)}
   100% {background: conic-gradient(#f03355 360deg,#0000 360deg)}
 }
+
+@media screen and (max-width: 600px) {
+  .bungee-tint-regular {
+    font-size: 30px;
+    line-height: 1.4;
+  }
+}
