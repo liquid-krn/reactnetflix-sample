@@ -14,7 +14,6 @@ function Signup() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const navigate = useNavigate();
 
-  // Helper function to validate email format
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -37,24 +36,18 @@ function Signup() {
     e.preventDefault();
     const { smail, spassword, repassword } = userDetails;
 
-    // Check for valid email format
     if (!isValidEmail(smail)) {
       setStatus("Email format invalid.");
-      return; // Stop here if email is invalid
+      return; 
     }
-
-    // Check for password length only if email is valid
     if (spassword.length < 6) {
       setStatus("Password must be at least 6 characters.");
-      return; // Stop here if password is invalid
+      return; 
     }
-
-    // Check if passwords match
     if (spassword !== repassword) {
       setStatus("Passwords do not match!");
       return;
     }
-
     const requestBody = {
       email: smail,
       password: spassword,

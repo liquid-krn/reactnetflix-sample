@@ -25,8 +25,7 @@ function Signin() {
 
     function onSignin(e) {
         e.preventDefault();
-        setstatus(""); // Reset status on each submission
-
+        setstatus(""); 
         const { smail, spassword } = userDetails;
         
         if (spassword.length < 6) {
