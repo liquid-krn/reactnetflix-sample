@@ -12,6 +12,7 @@ function Signup() {
   });
   const [status, setStatus] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [buttonClass, setButtonClass] = useState("btn fs-5 fw-semibold btn-success mt-3 cb");
   const navigate = useNavigate();
 
   function isValidEmail(email) {
@@ -29,7 +30,28 @@ function Signup() {
 
   useEffect(() => {
     const { smail, spassword, repassword } = userDetails;
-    setIsButtonDisabled(!smail || !spassword || spassword !== repassword || spassword.length < 6);
+
+    if (!isValidEmail(smail)) {
+      setIsButtonDisabled(true);
+      setButtonClass("btn fs-5 fw-semibold btn-success mt-3 cb"); // Remove "grow" class
+      return;
+    }
+
+    if (spassword.length < 6) {
+      setIsButtonDisabled(true);
+      setButtonClass("btn fs-5 fw-semibold btn-success mt-3 cb"); // Remove "grow" class
+      return;
+    }
+
+    if (spassword !== repassword) {
+      setIsButtonDisabled(true);
+      setButtonClass("btn fs-5 fw-semibold btn-success mt-3 cb"); // Remove "grow" class
+      return;
+    }
+
+    setIsButtonDisabled(false);
+    setButtonClass("btn fs-5 fw-semibold btn-success grow mt-3 cb");
+
   }, [userDetails]);
 
   function onSignin(e) {
@@ -38,16 +60,17 @@ function Signup() {
 
     if (!isValidEmail(smail)) {
       setStatus("Email format invalid.");
-      return; 
+      return;
     }
     if (spassword.length < 6) {
       setStatus("Password must be at least 6 characters.");
-      return; 
+      return;
     }
     if (spassword !== repassword) {
       setStatus("Passwords do not match!");
       return;
     }
+
     const requestBody = {
       email: smail,
       password: spassword,
@@ -88,7 +111,12 @@ function Signup() {
                 <Input p="Enter Password" n="spassword" ty="password" o={newDetails} value={userDetails.spassword} />
                 <Input p="Re-enter password" n="repassword" ty="password" o={newDetails} value={userDetails.repassword} />
                 <div className="d-grid mx-auto">
-                  <Button disabled={isButtonDisabled} className="btn fs-5 fw-semibold btn-success grow mt-3 cb" t="Get Started" ty="submit" />
+                  <Button
+                    disabled={isButtonDisabled}
+                    className={buttonClass}
+                    t="Get Started"
+                    ty="submit"
+                  />
                   <div className="mt-2">
                     <p>Already a member? <span onClick={handleclick} className="grow" style={{ cursor: "pointer" }}>Click Here</span></p>
                   </div>

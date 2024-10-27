@@ -5,70 +5,74 @@ import "./card.css";
 import { useNavigate } from "react-router-dom";
 
 function Signin() {       
-  
-    const [userDetails, setuserDetails] = useState({ smail: "", spassword: "" });
-    const [status, setstatus] = useState('');
+    const [userDetails, setUserDetails] = useState({ smail: "", spassword: "" });
+    const [status, setStatus] = useState("");
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    const [buttonClass, setButtonClass] = useState("btn fs-5 fw-semibold btn-success mt-3 cb");
     const navigate = useNavigate();
     
     function newDetails(e) {
         const { name, value } = e.target;
-        setuserDetails((oldValue) => ({
+        setUserDetails((oldValue) => ({
           ...oldValue,
           [name]: value,  
         }));
     }
 
     useEffect(() => {
-        setIsButtonDisabled(userDetails.spassword.length < 6);
-    }, [userDetails.spassword]);
+        const { smail, spassword } = userDetails;
+        const isFormValid = smail.includes("@") && smail.includes(".") && spassword.length >= 6;
+        
+        setIsButtonDisabled(!isFormValid);
+        setButtonClass(isFormValid ? "btn fs-5 fw-semibold btn-success grow mt-3 cb" : "btn fs-5 fw-semibold btn-success mt-3 cb");
+    }, [userDetails]);
 
     function onSignin(e) {
         e.preventDefault();
-        setstatus(""); 
+        setStatus(""); 
         const { smail, spassword } = userDetails;
-        
+
         if (spassword.length < 6) {
-            setstatus("Password character below 6");
+            setStatus("Password character below 6");
             return;
         }
 
         if (!smail.includes("@") || !smail.includes(".")) {
-            setstatus("Inputted value not an email");
+            setStatus("Inputted value not an email");
             return;
         }
 
         if (!smail || !spassword) {
-            setstatus("Empty input space. Kindly fill all fields.");
+            setStatus("Empty input space. Kindly fill all fields.");
             return;
         }
 
         const requestBody = {
-            email: userDetails.smail,
-            password: userDetails.spassword, 
+            email: smail,
+            password: spassword, 
         };
 
-        fetch(`https://server-rtzj.onrender.com/signin`, {
-            method: 'POST',
+        fetch("https://server-rtzj.onrender.com/signin", {
+            method: "POST",
             headers: {
-                "Content-Type": 'application/json'
+                "Content-Type": "application/json"
             }, 
             body: JSON.stringify(requestBody)
         })
         .then(res => res.json())
         .then(data => {
             if (data === "success") {
-                navigate('/moviepage');
+                navigate("/moviepage");
             } else {
-                setstatus('Wrong information inputted, kindly refill');
+                setStatus("Wrong information inputted, kindly refill");
             }
         })
-        .catch(() => setstatus("An error occurred. Please try again."));
+        .catch(() => setStatus("An error occurred. Please try again."));
     }
 
-    function handleclick(e) {
+    function handleClick(e) {
         e.preventDefault();
-        navigate('/signup');
+        navigate("/signup");
     }
 
     return (
@@ -85,12 +89,12 @@ function Signin() {
                                 <div className="d-grid mx-auto">
                                     <Button 
                                         disabled={isButtonDisabled} 
-                                        className="btn fs-5 fw-semibold btn-success grow mt-3 cb" 
+                                        className={buttonClass} 
                                         t="Sign-In" 
                                         ty="submit" 
                                     />
                                     <div className="mt-2">
-                                        <p>Become a member? <a href="#" onClick={handleclick} className="grow">Click Here</a></p>
+                                        <p>Become a member? <a href="#" onClick={handleClick} className="grow">Click Here</a></p>
                                     </div>
                                 </div>       
                             </div>
