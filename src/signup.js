@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Input from "./input";
 import Button from "./button";
 import "./card.css";
+import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
@@ -125,6 +126,7 @@ function Signup() {
             </div>
           </form>
         </div>
+        <Footer />
       </div>
     </div>
   );

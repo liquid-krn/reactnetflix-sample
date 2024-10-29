@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './movie.css';
 import IMG from './img';
 import './card.css';
+import Footer from './Footer';
 import Navbar from './navbar';
 
 function Moviepage() {

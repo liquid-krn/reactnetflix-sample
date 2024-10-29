@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Input from "./input";
 import Button from "./button";
 import "./card.css";
+import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 
 function Signin() {       
@@ -31,27 +32,22 @@ function Signin() {
         e.preventDefault();
         setStatus(""); 
         const { smail, spassword } = userDetails;
-
         if (spassword.length < 6) {
             setStatus("Password character below 6");
             return;
         }
-
         if (!smail.includes("@") || !smail.includes(".")) {
             setStatus("Inputted value not an email");
             return;
         }
-
         if (!smail || !spassword) {
             setStatus("Empty input space. Kindly fill all fields.");
             return;
         }
-
         const requestBody = {
             email: smail,
             password: spassword, 
         };
-
         fetch("https://server-rtzj.onrender.com/signin", {
             method: "POST",
             headers: {
@@ -69,12 +65,10 @@ function Signin() {
         })
         .catch(() => setStatus("An error occurred. Please try again."));
     }
-
     function handleClick(e) {
         e.preventDefault();
         navigate("/signup");
     }
-
     return (
         <div>
             <div className="home">
@@ -101,6 +95,7 @@ function Signin() {
                         </div>
                     </form>
                 </div>
+                <Footer />
             </div>
         </div>
     );
